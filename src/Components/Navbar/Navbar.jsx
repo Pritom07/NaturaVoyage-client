@@ -1,10 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoHomeSharp } from "react-icons/io5";
 import { GiGalleon } from "react-icons/gi";
 import { MdOutlineAddCard } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const navlinks = (
     <>
       <li className="text-[18px] text-white font-semibold">
@@ -32,6 +34,10 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleSignIn = () => {
+    navigate("/pages/signin");
+  };
   return (
     <div>
       <div className="navbar bg-green-500 shadow-sm">
@@ -60,7 +66,7 @@ const Navbar = () => {
               {navlinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-2xl md:text-3xl font-lora text-white">
+          <a className="btn btn-ghost text-2xl md:text-3xl font-lora text-white hover:bg-black border-2 border-green-500 p-1">
             NaturaVoyage
           </a>
         </div>
@@ -68,7 +74,10 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navlinks}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn bg-yellow-400 border-2 border-amber-700 hover:bg-yellow-500 font-bold text-[16px]">
+          <a
+            onClick={handleSignIn}
+            className="btn bg-yellow-400 border-2 border-amber-700 hover:bg-yellow-500 font-bold text-[16px]"
+          >
             SignIn
           </a>
         </div>

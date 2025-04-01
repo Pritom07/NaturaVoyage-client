@@ -12,6 +12,9 @@ import Home from "./Components/Home/Home";
 import AllSpots from "./Components/AllSpots/AllSpots";
 import AddSpot from "./Components/AddSpot/AddSpot";
 import Mylist from "./Components/Mylist/Mylist";
+import UserAccess from "./Components/Pages/UserAccess";
+import SignIn from "./Components/Pages/SignIn";
+import SignUp from "./Components/Pages/SignUp";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +24,11 @@ const router = createBrowserRouter(
         <Route path="/allspots" element={<AllSpots />}></Route>
         <Route path="/addspot" element={<AddSpot />}></Route>
         <Route path="/mylist" element={<Mylist />}></Route>
+      </Route>
+      ,
+      <Route path="/pages" element={<UserAccess />}>
+        <Route path="/pages/signin" element={<SignIn />}></Route>
+        <Route path="/pages/signup" element={<SignUp />}></Route>
       </Route>
     </>
   )
