@@ -1,10 +1,33 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Root from "./Components/Root/Root";
+import Home from "./Components/Home/Home";
+import AllSpots from "./Components/AllSpots/AllSpots";
+import AddSpot from "./Components/AddSpot/AddSpot";
+import Mylist from "./Components/Mylist/Mylist";
 
-createRoot(document.getElementById('root')).render(
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Root />}>
+        <Route index element={<Home />}></Route>
+        <Route path="/allspots" element={<AllSpots />}></Route>
+        <Route path="/addspot" element={<AddSpot />}></Route>
+        <Route path="/mylist" element={<Mylist />}></Route>
+      </Route>
+    </>
+  )
+);
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <RouterProvider router={router}></RouterProvider>
+  </StrictMode>
+);
