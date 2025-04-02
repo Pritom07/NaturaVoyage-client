@@ -2,13 +2,17 @@ import { FaGoogle } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ThemeContext } from "../Provider/Provider";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [pass, setPass] = useState(false);
+  const navigate = useNavigate();
+  const { signIn } = useContext(ThemeContext);
 
   const handlePasswordShow = () => {
     setPass(!pass);
@@ -18,6 +22,41 @@ const SignIn = () => {
     AOS.init({ duration: 600, easing: "ease-in-sine" });
   }, []);
 
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const email = form.get("email");
+    const password = form.get("password");
+
+    signIn(email, password)
+      .then((userCredential) => {
+        const signInUser = userCredential.user;
+        const lastSignIn = signInUser.metadata.lastSignInTime;
+        const username = signInUser.displayName;
+        const user = { email, lastSignIn };
+
+        fetch("http://localhost:5000/users", {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount) {
+              toast.success(`Welcome ${username} , Have a Good Day.`);
+            }
+            navigate("/");
+          });
+      })
+      .catch((err) => {
+        toast.error(
+          `${err.message} Enter correct Email and Password or Don't have an account go to SignUp.`
+        );
+      });
+  };
+
   return (
     <div
       data-aos="fade-down"
@@ -26,7 +65,10 @@ const SignIn = () => {
       <div className="hero-content">
         <div className="card w-full">
           <div className="card-body">
-            <form className="backdrop-blur-xs px-6 py-4 rounded-[5px] border-2 border-amber-700">
+            <form
+              onSubmit={handleSignIn}
+              className="backdrop-blur-xs px-6 py-4 rounded-[5px] border-2 border-amber-700"
+            >
               <h1 className="text-center font-lora text-3xl text-white font-semibold">
                 SignIn Here !
               </h1>
@@ -37,6 +79,7 @@ const SignIn = () => {
                 <input
                   type="email"
                   className="input w-72 mt-1 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  name="email"
                   placeholder="Enter Your Email"
                 />
               </div>
@@ -47,6 +90,7 @@ const SignIn = () => {
                 <input
                   type={pass ? "text" : "password"}
                   className="input w-72 mt-1 focus:outline-none focus:ring-2 focus:ring-green-500 relative"
+                  name="password"
                   placeholder="Enter Your Password"
                 />
               </div>

@@ -11,7 +11,6 @@ import { Typewriter } from "react-simple-typewriter";
 
 const Swipper = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  console.log(activeSlide);
   return (
     <div>
       <div className="w-full">
@@ -35,32 +34,6 @@ const Swipper = () => {
             setActiveSlide(swiperslide.activeIndex)
           }
         >
-          {/* <SwiperSlide className="relative w-full h-96 md:h-[35rem]">
-            <img
-              src="/Images/City.jpg"
-              alt="Slide 1"
-              className="w-full h-96 md:h-[35rem] object-cover"
-            />
-            {activeSlide === 0 && (
-              <div className="absolute top-1/2 left-1/2 text-white sm:text-lg md:text-2xl lg:text-5xl font-semibold px-4 w-[90%] md:w-[70%]">
-                <h1>
-                  Life is simple{" "}
-                  <span style={{ color: "red", fontWeight: "bold" }}>
-                    <Typewriter
-                      words={["Eat", "Sleep", "Code", "Repeat!"]}
-                      loop={5}
-                      cursor
-                      cursorStyle="_"
-                      typeSpeed={70}
-                      deleteSpeed={50}
-                      delaySpeed={1000}
-                    />
-                  </span>
-                </h1>
-              </div>
-            )}
-          </SwiperSlide> */}
-
           <SwiperSlide className="relative w-full h-96 md:h-[35rem]">
             <img
               src="/Images/City.jpg"

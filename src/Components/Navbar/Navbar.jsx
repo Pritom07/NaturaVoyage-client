@@ -3,9 +3,13 @@ import { IoHomeSharp } from "react-icons/io5";
 import { GiGalleon } from "react-icons/gi";
 import { MdOutlineAddCard } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
+import { useContext } from "react";
+import { ThemeContext } from "../Provider/Provider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { User, signOutUser } = useContext(ThemeContext);
 
   const navlinks = (
     <>
@@ -38,6 +42,18 @@ const Navbar = () => {
   const handleSignIn = () => {
     navigate("/pages/signin");
   };
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        toast.success(`${User.displayName} , You are SignOut now !`);
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
+
   return (
     <div>
       <div className="navbar bg-green-500 shadow-sm">
@@ -74,12 +90,21 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navlinks}</ul>
         </div>
         <div className="navbar-end">
-          <a
-            onClick={handleSignIn}
-            className="btn bg-yellow-400 border-2 border-amber-700 hover:bg-yellow-500 font-bold text-[16px]"
-          >
-            SignIn
-          </a>
+          {User ? (
+            <a
+              onClick={handleSignOut}
+              className="btn bg-yellow-400 border-2 border-amber-700 hover:bg-yellow-500 font-bold text-[16px]"
+            >
+              SignOut
+            </a>
+          ) : (
+            <a
+              onClick={handleSignIn}
+              className="btn bg-yellow-400 border-2 border-amber-700 hover:bg-yellow-500 font-bold text-[16px]"
+            >
+              SignIn
+            </a>
+          )}
         </div>
       </div>
     </div>

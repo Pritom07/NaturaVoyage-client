@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
+import { Slide, ToastContainer } from "react-toastify";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -15,6 +16,7 @@ import Mylist from "./Components/Mylist/Mylist";
 import UserAccess from "./Components/Pages/UserAccess";
 import SignIn from "./Components/Pages/SignIn";
 import SignUp from "./Components/Pages/SignUp";
+import Provider from "./Components/Provider/Provider";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +38,21 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <Provider>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Slide}
+      />
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
   </StrictMode>
 );
