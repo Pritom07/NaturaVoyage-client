@@ -3,7 +3,9 @@ import { SiGithub } from "react-icons/si";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const SignIn = () => {
   const [pass, setPass] = useState(false);
@@ -12,8 +14,15 @@ const SignIn = () => {
     setPass(!pass);
   };
 
+  useEffect(() => {
+    AOS.init({ duration: 600, easing: "ease-in-sine" });
+  }, []);
+
   return (
-    <div className="hero flex justify-center items-center min-h-screen">
+    <div
+      data-aos="fade-down"
+      className="hero flex justify-center items-center min-h-screen"
+    >
       <div className="hero-content">
         <div className="card w-full">
           <div className="card-body">
