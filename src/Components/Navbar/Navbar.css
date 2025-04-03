@@ -1,0 +1,7 @@
+@media only screen and (min-height: 1360px) and (max-height: 1366px) {
+  .name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-right: 2px;
+  }
+}

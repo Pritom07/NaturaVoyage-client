@@ -8,11 +8,14 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ThemeContext } from "../Provider/Provider";
 import { toast } from "react-toastify";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const SignIn = () => {
   const [pass, setPass] = useState(false);
   const navigate = useNavigate();
-  const { signIn } = useContext(ThemeContext);
+  const { signIn, googleLogin, githubLogin } = useContext(ThemeContext);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const handlePasswordShow = () => {
     setPass(!pass);
@@ -33,6 +36,7 @@ const SignIn = () => {
         const signInUser = userCredential.user;
         const lastSignIn = signInUser.metadata.lastSignInTime;
         const username = signInUser.displayName;
+        console.log(username);
         const user = { email, lastSignIn };
 
         fetch("http://localhost:5000/users", {
@@ -44,7 +48,7 @@ const SignIn = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.modifiedCount) {
+            if (data.modifiedCount > 0) {
               toast.success(`Welcome ${username} , Have a Good Day.`);
             }
             navigate("/");
@@ -54,6 +58,63 @@ const SignIn = () => {
         toast.error(
           `${err.message} Enter correct Email and Password or Don't have an account go to SignUp.`
         );
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin(googleProvider)
+      .then((res) => {
+        const user = res.user;
+        const name = user.displayName;
+        const email = user.email;
+        const lastSignIn = user.metadata.lastSignInTime;
+        const userInfo = { name, email, lastSignIn };
+
+        fetch("http://localhost:5000/users", {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount > 0 || data.upsertedCount > 0)
+              toast.success(`Welcome ${name} , Have a Good Day.`);
+            navigate("/");
+          });
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin(githubProvider)
+      .then((res) => {
+        const user = res.user;
+        const name = user.displayName;
+        const lastSignInTime = user.metadata.lastSignInTime;
+        const User = { name, lastSignInTime };
+
+        fetch("http://localhost:5000/users/github", {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(User),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.modifiedCount > 0 || data.upsertedCount > 0) {
+              toast.success(`Welcome ${name} , Have a Good Day.`);
+              navigate("/");
+            }
+          });
+      })
+      .catch((err) => {
+        toast.error(err.message);
       });
   };
 
@@ -106,15 +167,24 @@ const SignIn = () => {
               <div className="divider divider-success text-white font-semibold">
                 OR
               </div>
-              <button className="w-full bg-red-700 text-white p-2 rounded-2xl cursor-pointer text-[17px] font-semibold">
-                <FaGoogle className="inline mr-2.5" />
-                Google
-              </button>
-              <br />
-              <button className="w-full bg-black text-white p-2.5 rounded-2xl mt-3.5 cursor-pointer text-[17px] font-semibold">
-                <SiGithub className="inline mr-3" />
-                Github
-              </button>
+              <div>
+                <button
+                  onClick={handleGoogleLogin}
+                  className="w-full bg-red-700 text-white p-2 rounded-2xl cursor-pointer text-[17px] font-semibold"
+                >
+                  <FaGoogle className="inline mr-2.5" />
+                  Google
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={handleGithubLogin}
+                  className="w-full bg-black text-white p-2.5 rounded-2xl mt-3.5 cursor-pointer text-[17px] font-semibold"
+                >
+                  <SiGithub className="inline mr-3" />
+                  Github
+                </button>
+              </div>
               <h1 className="text-white text-center mt-3 text-[15px] font-semibold">
                 Don't have an account ? Go to
                 <span className="ml-1 text-yellow-500">

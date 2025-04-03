@@ -6,6 +6,7 @@ import { FaListCheck } from "react-icons/fa6";
 import { useContext } from "react";
 import { ThemeContext } from "../Provider/Provider";
 import { toast } from "react-toastify";
+import "./Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -91,12 +92,17 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {User ? (
-            <a
-              onClick={handleSignOut}
-              className="btn bg-yellow-400 border-2 border-amber-700 hover:bg-yellow-500 font-bold text-[16px]"
-            >
-              SignOut
-            </a>
+            <div className="flex justify-between items-center">
+              <p className="name mr-3 text-xl text-white font-semibold hidden md:block">
+                {User.displayName}
+              </p>
+              <a
+                onClick={handleSignOut}
+                className="btn bg-yellow-400 border-2 border-amber-700 hover:bg-yellow-500 font-bold text-[16px]"
+              >
+                SignOut
+              </a>
+            </div>
           ) : (
             <a
               onClick={handleSignIn}

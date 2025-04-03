@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -42,12 +43,22 @@ const Provider = ({ children }) => {
     return signOut(auth);
   };
 
+  const googleLogin = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
+
+  const githubLogin = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
+
   const information = {
     createAccount,
     updateUserProfile,
     signIn,
     User,
     signOutUser,
+    googleLogin,
+    githubLogin,
   };
 
   return (
