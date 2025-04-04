@@ -1,12 +1,48 @@
 import { useLottie } from "lottie-react";
 import globeLottie from "../globe.json";
+import { useContext } from "react";
+import { ThemeContext } from "../Provider/Provider";
 
 const AddSpot = () => {
+  const { User } = useContext(ThemeContext);
+  const userName = User.displayName;
+  const userEmail = User.email;
+
   const options = {
     animationData: globeLottie,
     loop: true,
   };
   const { View } = useLottie(options);
+
+  const handleAddSpot = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const spotName = form.get("spotname");
+    const contactNumber = form.get("contactnumber");
+    const location = form.get("location");
+    const averageCost = form.get("averagecost");
+    const seasonality = form.get("seasonality");
+    const travelTime = form.get("traveltime");
+    const totalVisitors = form.get("totalvisitors");
+    const shortDescription = form.get("shortdescription");
+    const photoURL = form.get("photourl");
+
+    const spotInfo = {
+      spotName,
+      contactNumber,
+      location,
+      averageCost,
+      seasonality,
+      travelTime,
+      totalVisitors,
+      shortDescription,
+      photoURL,
+      userName,
+      userEmail,
+    };
+
+    console.log(spotInfo);
+  };
 
   return (
     <div className="px-2 flex">
@@ -24,7 +60,7 @@ const AddSpot = () => {
             tourism-driven opportunities.
           </h1>
         </div>
-        <form className="mt-4">
+        <form onSubmit={handleAddSpot} className="mt-4">
           <div className="flex flex-col md:flex-row justify-center tems-center">
             <div className="w-full md:w-1/2">
               <label className="text-[18px] font-semibold">
@@ -35,6 +71,7 @@ const AddSpot = () => {
                 name="spotname"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter Spot Name"
+                required
               />
             </div>
             <div className="w-full md:w-1/2 md:ml-7">
@@ -46,6 +83,7 @@ const AddSpot = () => {
                 name="contactnumber"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter Contact Number"
+                required
               />
             </div>
           </div>
@@ -57,6 +95,7 @@ const AddSpot = () => {
                 name="location"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter Location"
+                required
               />
             </div>
             <div className="w-full md:w-1/2 md:ml-7">
@@ -66,6 +105,7 @@ const AddSpot = () => {
                 name="averagecost"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter Average Cost"
+                required
               />
             </div>
           </div>
@@ -77,6 +117,7 @@ const AddSpot = () => {
                 name="seasonality"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter Seasonality like- Summer, Winter etc."
+                required
               />
             </div>
             <div className="w-full md:w-1/2 md:ml-8">
@@ -86,6 +127,7 @@ const AddSpot = () => {
                 name="traveltime"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter Travel Time like - 7 days"
+                required
               />
             </div>
           </div>
@@ -99,6 +141,7 @@ const AddSpot = () => {
                 name="totalvisitors"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter Total Visitors Per Year like - 10000"
+                required
               />
             </div>
             <div className="w-full md:w-1/2 md:ml-8">
@@ -110,6 +153,7 @@ const AddSpot = () => {
                 name="shortdescription"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter Short Description"
+                required
               />
             </div>
           </div>
@@ -120,9 +164,10 @@ const AddSpot = () => {
               name="photourl"
               className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Enter PhotoURL"
+              required
             />
           </div>
-          <button className="w-full bg-green-500 text-white text-[18px] px-2 py-2.5 font-semibold mt-4 rounded-xl cursor-pointer hover:bg-green-600">
+          <button className="w-full bg-green-500 text-white text-[18px] px-2 py-2.5 font-semibold mt-5 rounded-xl cursor-pointer hover:bg-green-600">
             Add Tourist Spot
           </button>
         </form>

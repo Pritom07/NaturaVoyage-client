@@ -73,7 +73,7 @@ const SignUp = () => {
   return (
     <div
       data-aos="fade-down"
-      className="hero flex justify-center items-center min-h-screen"
+      className="hero flex justify-center items-center min-h-screen font-montserrat"
     >
       <div className="hero-content">
         <div className="card w-full">
@@ -91,7 +91,7 @@ const SignUp = () => {
                 </label>
                 <input
                   type="text"
-                  className="input w-72 mt-1 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="input w-80 mt-1 focus:outline-none focus:ring-2 focus:ring-green-500"
                   name="name"
                   placeholder="Enter Your Name"
                   required
@@ -103,7 +103,7 @@ const SignUp = () => {
                 </label>
                 <input
                   type="email"
-                  className="input w-72 mt-1 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="input w-80 mt-1 focus:outline-none focus:ring-2 focus:ring-green-500"
                   name="email"
                   placeholder="Enter Your Email"
                   required
@@ -115,14 +115,14 @@ const SignUp = () => {
                 </label>
                 <input
                   type={pass ? "text" : "password"}
-                  className="input w-72 mt-1 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="input w-80 mt-1 focus:outline-none focus:ring-2 focus:ring-green-500"
                   name="password"
                   placeholder="Enter Your Password"
                   required
                 />
               </div>
               <div
-                className="text-2xl cursor-pointer absolute top-64 right-10"
+                className="text-2xl cursor-pointer absolute top-64 right-8"
                 onClick={handlePasswordShow}
               >
                 {pass ? <IoEyeOff /> : <IoEye />}

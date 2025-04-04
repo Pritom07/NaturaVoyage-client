@@ -36,7 +36,6 @@ const SignIn = () => {
         const signInUser = userCredential.user;
         const lastSignIn = signInUser.metadata.lastSignInTime;
         const username = signInUser.displayName;
-        console.log(username);
         const user = { email, lastSignIn };
 
         fetch("http://localhost:5000/users", {
@@ -121,7 +120,7 @@ const SignIn = () => {
   return (
     <div
       data-aos="fade-down"
-      className="hero flex justify-center items-center min-h-screen"
+      className="hero flex justify-center items-center min-h-screen font-montserrat"
     >
       <div className="hero-content">
         <div className="card w-full">
@@ -130,7 +129,7 @@ const SignIn = () => {
               onSubmit={handleSignIn}
               className="backdrop-blur-xs px-6 py-4 rounded-[5px] border-2 border-amber-700"
             >
-              <h1 className="text-center font-lora text-3xl text-white font-semibold">
+              <h1 className="text-center font-lora text-3xl text-white font-semibold font-lora">
                 SignIn Here !
               </h1>
               <div className="mt-3">

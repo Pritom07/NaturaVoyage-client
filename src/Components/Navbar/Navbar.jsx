@@ -14,24 +14,24 @@ const Navbar = () => {
 
   const navlinks = (
     <>
-      <li className="text-[18px] text-white font-semibold">
+      <li className="text-[18px] text-white font-semibold font-montserrat">
         <NavLink to="/">
           <IoHomeSharp /> Home
         </NavLink>
       </li>
-      <li className="text-[18px] text-white font-semibold">
+      <li className="text-[18px] text-white font-semibold font-montserrat">
         <NavLink to="/allspots">
           <GiGalleon />
           All Tourist Spot
         </NavLink>
       </li>
-      <li className="text-[18px] text-white font-semibold">
+      <li className="text-[18px] text-white font-semibold font-montserrat">
         <NavLink to="/addspot">
           <MdOutlineAddCard />
           Add Tourist Spot
         </NavLink>
       </li>
-      <li className="text-[18px] text-white font-semibold">
+      <li className="text-[18px] text-white font-semibold font-montserrat">
         <NavLink to="/mylist">
           <FaListCheck />
           My List
@@ -90,7 +90,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navlinks}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end font-montserrat">
           {User ? (
             <div className="flex justify-between items-center">
               <p className="name mr-3 text-xl text-white font-semibold hidden md:block">

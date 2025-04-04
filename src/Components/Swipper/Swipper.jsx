@@ -41,7 +41,7 @@ const Swipper = () => {
               className="w-full h-96 md:h-[35rem] object-cover"
             />
             {activeSlide === 0 && (
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-[#FF7F50] text-lg sm:text-xl md:text-4xl lg:text-6xl font-bold text-center px-4 w-full md:w-[70%]">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-[#FF7F50] text-lg sm:text-xl md:text-4xl lg:text-6xl font-bold text-center px-4 w-full md:w-[70%] font-montserrat">
                 <h1 className="leading-tight">
                   Travel is amazing{" "}
                   <span className="text-[#FFA500]">
@@ -71,7 +71,7 @@ const Swipper = () => {
                 initial={{ opacity: 0, y: -300 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white sm:text-lg md:text-3xl lg:text-5xl font-bold text-center px-4 w-[90%] md:w-[70%]"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white sm:text-lg md:text-3xl lg:text-5xl font-bold text-center px-4 w-[90%] md:w-[70%] font-montserrat"
               >
                 "Discover breathtaking destinations, hassle-free travel
                 planning, and exclusive deals – all in one place!"
@@ -90,7 +90,7 @@ const Swipper = () => {
                 initial={{ opacity: 0, y: 200 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white sm:text-lg md:text-3xl lg:text-5xl font-bold text-center px-4 w-[90%] md:w-[70%]"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white sm:text-lg md:text-3xl lg:text-5xl font-bold text-center px-4 w-[90%] md:w-[70%] font-montserrat"
               >
                 "Your gateway to adventure – seamless bookings, expert travel
                 guides, and memories that last a lifetime!"
