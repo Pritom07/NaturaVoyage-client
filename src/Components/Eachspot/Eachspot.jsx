@@ -11,7 +11,7 @@ const Eachspot = ({ spot }) => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-sm flex font-montserrat">
+    <div className="card bg-base-100 border-1 border-green-500 shadow-sm flex font-montserrat">
       <figure>
         <img src={photoURL} alt="TouristSpot" />
       </figure>
@@ -19,7 +19,7 @@ const Eachspot = ({ spot }) => {
         <h2 className="card-title text-2xl">Spot Name : {spotName}</h2>
         <h1 className="text-xl font-semibold">Country : {countryName}</h1>
         <div className="flex justify-between items-center text-[15px] font-semibold flex-grow">
-          <h1>Average Cost : {averageCost}</h1>
+          <h1>Average Cost : ${averageCost}</h1>
           <h1>Travel Time : {travelTime}</h1>
         </div>
         <div className="card-actions mt-1">

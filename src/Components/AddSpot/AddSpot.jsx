@@ -121,7 +121,7 @@ const AddSpot = () => {
                 type="text"
                 name="averagecost"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="Enter Average Cost"
+                placeholder="Enter Average Cost in $ like- 200,300"
                 required
               />
             </div>

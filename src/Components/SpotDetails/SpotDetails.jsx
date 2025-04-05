@@ -31,7 +31,7 @@ const SpotDetails = () => {
               <div className="flex justify-between items-center text-[16px] font-semibold">
                 <h1>
                   Average Cost :{" "}
-                  <span className="text-slate-500">{averageCost}</span>
+                  <span className="text-slate-500">${averageCost}</span>
                 </h1>
                 <h1>
                   Travel Time :{" "}
