@@ -129,7 +129,7 @@ const SignIn = () => {
               onSubmit={handleSignIn}
               className="backdrop-blur-xs px-6 py-4 rounded-[5px] border-2 border-amber-700"
             >
-              <h1 className="text-center font-lora text-3xl text-white font-semibold font-lora">
+              <h1 className="text-center text-3xl text-white font-semibold font-lora">
                 SignIn Here !
               </h1>
               <div className="mt-3">

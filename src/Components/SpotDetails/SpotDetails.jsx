@@ -16,26 +16,47 @@ const SpotDetails = () => {
     photoURL,
   } = spot;
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto font-montserrat px-1">
       <section className="grid grid-cols-12 gap-5 mt-8">
-        <div className="col-span-7">
+        <div className="col-span-12 xl:col-span-8">
           <div className="card lg:card-side bg-base-100 shadow-sm">
-            <figure>
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
-                alt="Album"
-              />
-            </figure>
+            <img src={photoURL} className=" w-full lg:w-96" alt="TouristSpot" />
             <div className="card-body">
-              <h2 className="card-title">New album is released!</h2>
-              <p>Click the button to listen on Spotiwhy app.</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Listen</button>
+              <h2 className="card-title text-2xl font-semibold font-lora">
+                {spotName}
+              </h2>
+              <h1 className="text-xl font-semibold">
+                Country Name : {countryName}
+              </h1>
+              <div className="flex justify-between items-center text-[16px] font-semibold">
+                <h1>
+                  Average Cost :{" "}
+                  <span className="text-slate-500">{averageCost}</span>
+                </h1>
+                <h1>
+                  Travel Time :{" "}
+                  <span className="text-slate-500">{travelTime}</span>
+                </h1>
               </div>
+              <h1 className="text-[16px] font-semibold">
+                Location : <span className="text-slate-500">{location}</span>
+              </h1>
+              <h1 className="text-[16px] font-semibold">
+                Total Visitors Per Year :{" "}
+                <span className="text-slate-500">{totalVisitors}</span>
+              </h1>
+              <h1 className="text-[16px] font-semibold">
+                Seasonality :{" "}
+                <span className="text-slate-500">{seasonality}</span>
+              </h1>
+              <h1 className="text-[16px] font-semibold">
+                Short Description :{" "}
+                <span className="text-slate-500">{shortDescription}</span>
+              </h1>
             </div>
           </div>
         </div>
-        <div className="col-span-5">
+        <div className="col-span-12 xl:col-span-4">
           <Map />
         </div>
       </section>

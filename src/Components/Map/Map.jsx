@@ -37,8 +37,8 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {markers.map((marker) => (
-          <Marker position={marker.geocode}>
+        {markers.map((marker, idx) => (
+          <Marker key={idx} position={marker.geocode}>
             <Popup>{marker.popup}</Popup>
           </Marker>
         ))}
