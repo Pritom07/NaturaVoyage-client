@@ -1,0 +1,38 @@
+import PropTypes from "prop-types";
+import Eachspot from "../Eachspot/Eachspot";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+
+const AmazingSpot = ({ touristSpots }) => {
+  const navigate = useNavigate();
+
+  const handleSeeAll = () => {
+    navigate("allspots");
+  };
+  return (
+    <div className="max-w-6xl mx-auto mt-6 px-2">
+      <h1 className="text-center font-lora text-5xl">
+        Amazing Tour Places Around The World
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-6">
+        {touristSpots.map((spot) => (
+          <Eachspot key={spot._id} spot={spot}></Eachspot>
+        ))}
+      </div>
+      <div className="flex justify-end mt-4">
+        <button
+          onClick={handleSeeAll}
+          className="text-green-500 text-xl font-semibold cursor-pointer"
+        >
+          See All <FaArrowRightLong className="inline" />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+AmazingSpot.propTypes = {
+  touristSpots: PropTypes.array.isRequired,
+};
+
+export default AmazingSpot;

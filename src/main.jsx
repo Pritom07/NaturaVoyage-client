@@ -17,15 +17,31 @@ import UserAccess from "./Components/Pages/UserAccess";
 import SignIn from "./Components/Pages/SignIn";
 import SignUp from "./Components/Pages/SignUp";
 import Provider from "./Components/Provider/Provider";
+import SpotDetails from "./Components/SpotDetails/SpotDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Root />}>
-        <Route index element={<Home />}></Route>
-        <Route path="/allspots" element={<AllSpots />}></Route>
+        <Route
+          index
+          loader={() => fetch("http://localhost:5000/spots")}
+          element={<Home />}
+        ></Route>
+        <Route
+          path="/allspots"
+          loader={() => fetch("http://localhost:5000/spots")}
+          element={<AllSpots />}
+        ></Route>
         <Route path="/addspot" element={<AddSpot />}></Route>
         <Route path="/mylist" element={<Mylist />}></Route>
+        <Route
+          path="/spot/:id"
+          loader={({ params }) =>
+            fetch(`http://localhost:5000/spots/${params.id}`)
+          }
+          element={<SpotDetails />}
+        ></Route>
       </Route>
       ,
       <Route path="/pages" element={<UserAccess />}>

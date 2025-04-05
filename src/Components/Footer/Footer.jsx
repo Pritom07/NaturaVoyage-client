@@ -25,7 +25,7 @@ const Footer = () => {
           backgroundPosition: "center",
         }}
       >
-        <section className="font-montserrat grid grid-cols-12 gap-4 max-w-6xl mx-auto">
+        <section className="font-montserrat grid grid-cols-12 gap-4 max-w-6xl mx-auto px-2">
           <div className="col-span-12 lg:col-span-8">
             <div className="w-[20%]">{View}</div>
             <h1 className="font-lora text-4xl font-semibold text-green-500">

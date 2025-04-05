@@ -2,6 +2,7 @@ import { useLottie } from "lottie-react";
 import globeLottie from "../globe.json";
 import { useContext } from "react";
 import { ThemeContext } from "../Provider/Provider";
+import Swal from "sweetalert2";
 
 const AddSpot = () => {
   const { User } = useContext(ThemeContext);
@@ -18,7 +19,7 @@ const AddSpot = () => {
     e.preventDefault();
     const form = new FormData(e.target);
     const spotName = form.get("spotname");
-    const contactNumber = form.get("contactnumber");
+    const countryName = form.get("countryname");
     const location = form.get("location");
     const averageCost = form.get("averagecost");
     const seasonality = form.get("seasonality");
@@ -29,7 +30,7 @@ const AddSpot = () => {
 
     const spotInfo = {
       spotName,
-      contactNumber,
+      countryName,
       location,
       averageCost,
       seasonality,
@@ -41,7 +42,25 @@ const AddSpot = () => {
       userEmail,
     };
 
-    console.log(spotInfo);
+    fetch("http://localhost:5000/spots", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(spotInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: `${spotName} added successfully !`,
+            icon: "success",
+            draggable: true,
+            confirmButtonColor: "#4CAF50",
+          });
+          e.target.reset();
+        }
+      });
   };
 
   return (
@@ -75,14 +94,12 @@ const AddSpot = () => {
               />
             </div>
             <div className="w-full md:w-1/2 md:ml-7">
-              <label className="text-[18px] font-semibold">
-                Contact Number
-              </label>
+              <label className="text-[18px] font-semibold">Country Name</label>
               <input
                 type="text"
-                name="contactnumber"
+                name="countryname"
                 className="input w-full focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="Enter Contact Number"
+                placeholder="Enter Country Name"
                 required
               />
             </div>

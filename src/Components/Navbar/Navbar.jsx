@@ -93,7 +93,7 @@ const Navbar = () => {
         <div className="navbar-end font-montserrat">
           {User ? (
             <div className="flex justify-between items-center">
-              <p className="name mr-3 text-xl text-white font-semibold hidden md:block">
+              <p className="name mr-3 text-xl xl:text-xl lg:text-[14px]  text-white font-semibold hidden md:block">
                 {User.displayName}
               </p>
               <a
