@@ -11,14 +11,14 @@ const Achievements = () => {
     visible: { opacity: 1, x: 0, transition: { duration: 1.8 } },
   };
   return (
-    <div className="max-w-6xl mx-auto mt-9 font-montserrat">
+    <div className="max-w-6xl mx-auto mt-9 font-montserrat px-2">
       <h1 className="font-lora text-5xl font-semibold text-center">
         Our Achievements
       </h1>
       <motion.section
         initial="hidden"
         whileInView="visible"
-        className="grid grid-cols-4 gap-4 mt-6"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-4 mt-6"
       >
         <motion.div
           variants={itemVariants}

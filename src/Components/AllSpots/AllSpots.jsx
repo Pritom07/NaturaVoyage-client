@@ -55,7 +55,12 @@ const AllSpots = () => {
       ) : (
         <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 mt-5">
           {spots.map((spot) => (
-            <Eachspot key={spot._id} spot={spot} />
+            <Eachspot
+              key={spot._id}
+              spot={spot}
+              spots={spots}
+              setSpots={setSpots}
+            />
           ))}
         </section>
       )}

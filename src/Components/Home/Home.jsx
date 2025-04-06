@@ -4,14 +4,16 @@ import Swipper from "../Swipper/Swipper";
 import Facilities from "../Facilities/Facilities";
 import Opportunity from "../Opportunity/Opportunity";
 import Achievements from "../Achievements/Achievements";
+import { useState } from "react";
 
 const Home = () => {
   const allTouristSpots = useLoaderData();
   const touristSpots = allTouristSpots.slice(0, 6);
+  const [spots, setSpots] = useState(touristSpots);
   return (
     <div>
       <Swipper />
-      <AmazingSpot touristSpots={touristSpots} />
+      <AmazingSpot spots={spots} setSpots={setSpots} />
       <Facilities />
       <Opportunity />
       <Achievements />
