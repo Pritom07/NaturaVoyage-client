@@ -1,6 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import AmazingSpot from "../AmazingSpot/AmazingSpot";
 import Swipper from "../Swipper/Swipper";
+import Facilities from "../Facilities/Facilities";
+import Opportunity from "../Opportunity/Opportunity";
 
 const Home = () => {
   const allTouristSpots = useLoaderData();
@@ -9,6 +11,8 @@ const Home = () => {
     <div>
       <Swipper />
       <AmazingSpot touristSpots={touristSpots} />
+      <Facilities />
+      <Opportunity />
     </div>
   );
 };

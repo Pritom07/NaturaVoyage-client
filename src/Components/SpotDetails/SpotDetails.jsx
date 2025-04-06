@@ -19,7 +19,7 @@ const SpotDetails = () => {
     <div className="max-w-6xl mx-auto font-montserrat px-1">
       <section className="grid grid-cols-12 gap-5 mt-8">
         <div className="col-span-12 xl:col-span-8">
-          <div className="card lg:card-side bg-base-100 shadow-sm">
+          <div className="card lg:card-side bg-base-100 shadow-sm border-2 border-green-500">
             <img src={photoURL} className=" w-full lg:w-96" alt="TouristSpot" />
             <div className="card-body">
               <h2 className="card-title text-2xl font-semibold font-lora">
