@@ -20,7 +20,7 @@ const Swipper = () => {
           slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
-          speed={1000}
+          speed={1200}
           className="overflow-hidden"
           effect={"coverflow"}
           centeredSlides={true}
