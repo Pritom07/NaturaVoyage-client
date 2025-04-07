@@ -8,7 +8,7 @@ import { CgGym } from "react-icons/cg";
 const Facilities = () => {
   return (
     <div className="mt-6 max-w-6xl mx-auto font-montserrat">
-      <h1 className="text-center text-5xl font-lora font-semibold">
+      <h1 className="text-center text-4xl md:text-5xl font-lora font-semibold">
         Our Best Facilities
       </h1>
 

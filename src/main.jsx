@@ -20,6 +20,7 @@ import Provider from "./Components/Provider/Provider";
 import SpotDetails from "./Components/SpotDetails/SpotDetails";
 import UpdateSpot from "./Components/UpdateSpot/UpdateSpot";
 import Error from "./Components/Error";
+import SpecificCountry from "./Components/SpecificCountry/SpecificCountry";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -56,6 +57,13 @@ const router = createBrowserRouter(
             fetch(`http://localhost:5000/spots/${params.id}`)
           }
           element={<SpotDetails />}
+        ></Route>
+        <Route
+          path="/country/:countryName"
+          loader={({ params }) =>
+            fetch(`http://localhost:5000/spots/country/${params.countryName}`)
+          }
+          element={<SpecificCountry />}
         ></Route>
       </Route>
       ,

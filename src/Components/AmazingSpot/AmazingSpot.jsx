@@ -11,7 +11,7 @@ const AmazingSpot = ({ spots, setSpots }) => {
   };
   return (
     <div className="max-w-6xl mx-auto mt-6 px-2">
-      <h1 className="text-center font-lora text-5xl font-semibold">
+      <h1 className="text-center font-lora text-4xl md:text-5xl font-semibold">
         Amazing Tour Places Around The World
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-6">

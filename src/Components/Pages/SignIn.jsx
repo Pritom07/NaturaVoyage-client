@@ -105,7 +105,6 @@ const SignIn = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.modifiedCount > 0 || data.upsertedCount > 0) {
               toast.success(`Welcome ${name} , Have a Good Day.`);
               navigate("/");
