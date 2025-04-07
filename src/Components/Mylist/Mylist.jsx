@@ -1,13 +1,49 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { MdOutlineUpdate } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const Mylist = () => {
-  const userAddedSpots = useLoaderData();
+  const addedSpots = useLoaderData();
+  const [userAddedSpots, setUserAddedSpots] = useState(addedSpots);
   const navigate = useNavigate();
 
   const handleUpdateSpot = (id) => {
     navigate(`/update/${id}`);
+  };
+
+  const handleDeleteSpot = (id, spotName) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#F44336",
+      cancelButtonColor: "#4CAF50",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/spots/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: `${spotName} is Deleted`,
+                icon: "success",
+                confirmButtonColor: "#4CAF50",
+              });
+              const newUserAddedSpots = userAddedSpots.filter(
+                (spot) => spot._id !== id
+              );
+              setUserAddedSpots(newUserAddedSpots);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -49,7 +85,10 @@ const Mylist = () => {
                   </button>
                 </td>
                 <td>
-                  <button className="bg-red-500 text-white text-[16px] font-semibold p-2 rounded-[5px] cursor-pointer">
+                  <button
+                    onClick={() => handleDeleteSpot(spot._id, spot.spotName)}
+                    className="bg-red-500 text-white text-[16px] font-semibold p-2 rounded-[5px] cursor-pointer"
+                  >
                     <RiDeleteBinFill className="inline mr-1 text-xl" />
                     Delete
                   </button>

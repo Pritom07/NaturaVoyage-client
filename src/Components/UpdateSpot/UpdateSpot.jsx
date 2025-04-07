@@ -63,6 +63,7 @@ const UpdateSpot = () => {
             confirmButtonColor: "#4CAF50",
           });
           navigate(`/mylist/${encodeURIComponent(User?.email)}`);
+          e.target.reset();
         }
       });
   };

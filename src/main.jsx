@@ -19,6 +19,7 @@ import SignUp from "./Components/Pages/SignUp";
 import Provider from "./Components/Provider/Provider";
 import SpotDetails from "./Components/SpotDetails/SpotDetails";
 import UpdateSpot from "./Components/UpdateSpot/UpdateSpot";
+import Error from "./Components/Error";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -62,6 +63,7 @@ const router = createBrowserRouter(
         <Route path="/pages/signin" element={<SignIn />}></Route>
         <Route path="/pages/signup" element={<SignUp />}></Route>
       </Route>
+      ,<Route path="*" element={<Error />}></Route>
     </>
   )
 );
