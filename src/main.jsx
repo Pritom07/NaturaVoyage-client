@@ -18,6 +18,7 @@ import SignIn from "./Components/Pages/SignIn";
 import SignUp from "./Components/Pages/SignUp";
 import Provider from "./Components/Provider/Provider";
 import SpotDetails from "./Components/SpotDetails/SpotDetails";
+import UpdateSpot from "./Components/UpdateSpot/UpdateSpot";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,7 +35,20 @@ const router = createBrowserRouter(
           element={<AllSpots />}
         ></Route>
         <Route path="/addspot" element={<AddSpot />}></Route>
-        <Route path="/mylist" element={<Mylist />}></Route>
+        <Route
+          path="/mylist/:email"
+          loader={({ params }) =>
+            fetch(`http://localhost:5000/spots/user/${params.email}`)
+          }
+          element={<Mylist />}
+        ></Route>
+        <Route
+          path="/update/:id"
+          loader={({ params }) =>
+            fetch(`http://localhost:5000/spots/${params.id}`)
+          }
+          element={<UpdateSpot />}
+        ></Route>
         <Route
           path="/spot/:id"
           loader={({ params }) =>

@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { ThemeContext } from "../Provider/Provider";
 
 const Eachspot = ({ spot, spots, setSpots }) => {
   const navigate = useNavigate();
+  const { User } = useContext(ThemeContext);
   const { _id, spotName, countryName, averageCost, travelTime, photoURL } =
     spot;
 
@@ -57,13 +60,17 @@ const Eachspot = ({ spot, spots, setSpots }) => {
         <div className="card-actions mt-1 flex justify-between items-center">
           <button
             onClick={handleDetails}
-            className="btn bg-green-500 text-white font-semibold"
+            className={`btn bg-green-500 text-white font-semibold ${
+              !User && "w-full"
+            }`}
           >
             View Details
           </button>
           <button
             onClick={() => handleDelete(_id)}
-            className="btn bg-red-500 text-white font-semibold"
+            className={`btn bg-red-500 text-white font-semibold ${
+              User ? "block" : "hidden"
+            }`}
           >
             Delete
           </button>

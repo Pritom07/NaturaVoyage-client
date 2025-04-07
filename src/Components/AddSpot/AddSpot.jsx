@@ -6,8 +6,8 @@ import Swal from "sweetalert2";
 
 const AddSpot = () => {
   const { User } = useContext(ThemeContext);
-  const userName = User.displayName;
-  const userEmail = User.email;
+  const userName = User?.displayName;
+  const userEmail = User?.email;
 
   const options = {
     animationData: globeLottie,
@@ -79,7 +79,7 @@ const AddSpot = () => {
             tourism-driven opportunities.
           </h1>
         </div>
-        <form onSubmit={handleAddSpot} className="mt-4">
+        <form onSubmit={handleAddSpot} className="mt-4 font-montserrat">
           <div className="flex flex-col md:flex-row justify-center tems-center">
             <div className="w-full md:w-1/2">
               <label className="text-[18px] font-semibold">

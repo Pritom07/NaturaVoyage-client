@@ -31,8 +31,15 @@ const Navbar = () => {
           Add Tourist Spot
         </NavLink>
       </li>
+      {/* <li className="text-[18px] text-white font-semibold font-montserrat">
+        <NavLink to={`/mylist/${encodeURIComponent(User.displayName)}`}>
+          <FaListCheck />
+          My List
+        </NavLink>
+      </li> */}
+
       <li className="text-[18px] text-white font-semibold font-montserrat">
-        <NavLink to="/mylist">
+        <NavLink to={`/mylist/${encodeURIComponent(User?.email)}`}>
           <FaListCheck />
           My List
         </NavLink>
@@ -94,7 +101,7 @@ const Navbar = () => {
           {User ? (
             <div className="flex justify-between items-center">
               <p className="name mr-3 text-xl xl:text-xl lg:text-[14px]  text-white font-semibold hidden md:block">
-                {User.displayName}
+                {User?.displayName}
               </p>
               <a
                 onClick={handleSignOut}
