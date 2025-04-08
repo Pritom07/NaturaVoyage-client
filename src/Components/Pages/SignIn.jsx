@@ -22,7 +22,7 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-    AOS.init({ duration: 600, easing: "ease-in-sine" });
+    AOS.init({ duration: 600, easing: "ease-in-sine", once: true });
   }, []);
 
   const handleSignIn = (e) => {
@@ -120,6 +120,7 @@ const SignIn = () => {
     <div
       data-aos="fade-down"
       className="hero flex justify-center items-center min-h-screen font-montserrat"
+      style={{ willChange: "transform" }}
     >
       <div className="hero-content">
         <div className="card w-full">

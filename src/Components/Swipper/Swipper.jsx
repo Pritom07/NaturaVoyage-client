@@ -13,13 +13,14 @@ const Swipper = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   return (
     <div>
-      <div className="w-full">
+      <div className="w-full" style={{ willChange: "transform" }}>
         <Swiper
           modules={[Navigation, Pagination, EffectCoverflow]}
           spaceBetween={30}
           slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
+          lazy={true}
           speed={1200}
           className="overflow-hidden"
           effect={"coverflow"}
@@ -38,7 +39,7 @@ const Swipper = () => {
             <img
               src="/Images/City.jpg"
               alt="Slide 1"
-              className="w-full h-96 md:h-[35rem] object-cover"
+              className="w-full h-96 md:h-[35rem] object-cover swiper-lazy"
             />
             {activeSlide === 0 && (
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-[#FF7F50] text-lg sm:text-xl md:text-4xl lg:text-6xl font-bold text-center px-4 w-full md:w-[70%] font-montserrat">
@@ -64,13 +65,14 @@ const Swipper = () => {
             <img
               src="/Images/Mountain.jpg"
               alt="Slide 2"
-              className="w-full h-96 md:h-[35rem] object-cover"
+              className="w-full h-96 md:h-[35rem] object-cover swiper-lazy"
             />
             {activeSlide === 1 && (
               <motion.div
                 initial={{ opacity: 0, y: -300 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
+                viewport={{ once: true }}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white sm:text-lg md:text-3xl lg:text-5xl font-bold text-center px-4 w-[90%] md:w-[70%] font-montserrat"
               >
                 "Discover breathtaking destinations, hassle-free travel
@@ -83,13 +85,14 @@ const Swipper = () => {
             <img
               src="/Images/Sea.jpg"
               alt="Slide 3"
-              className="w-full h-96 md:h-[35rem] object-cover"
+              className="w-full h-96 md:h-[35rem] object-cover swiper-lazy"
             />
             {activeSlide === 2 && (
               <motion.div
                 initial={{ opacity: 0, y: 200 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white sm:text-lg md:text-3xl lg:text-5xl font-bold text-center px-4 w-[90%] md:w-[70%] font-montserrat"
               >
                 "Your gateway to adventure – seamless bookings, expert travel

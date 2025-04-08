@@ -10,11 +10,14 @@ const AmazingSpot = ({ spots, setSpots }) => {
     navigate("allspots");
   };
   return (
-    <div className="max-w-6xl mx-auto mt-6 px-2">
+    <div
+      className="max-w-6xl mx-auto mt-6 px-2"
+      style={{ willChange: "transform" }}
+    >
       <h1 className="text-center font-lora text-4xl md:text-5xl font-semibold">
         Amazing Tour Places Around The World
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-7">
         {spots.map((spot) => (
           <Eachspot
             key={spot._id}

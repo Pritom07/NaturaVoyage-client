@@ -12,7 +12,10 @@ const Countrycard = ({ country }) => {
   };
 
   return (
-    <div className="relative overflow-hidden cursor-pointer rounded-md group font-montserrat shadow-md border-2 border-green-500">
+    <div
+      className="relative overflow-hidden cursor-pointer rounded-md group font-montserrat shadow-md border-2 border-green-500"
+      style={{ willChange: "transform" }}
+    >
       <img
         src={photoURL}
         alt="Country Photos"

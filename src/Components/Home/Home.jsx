@@ -7,6 +7,7 @@ import Achievements from "../Achievements/Achievements";
 import { useState } from "react";
 import Countries from "../Countries/Countries";
 import Talking from "../Talking/Talking";
+import FrequentAsked from "../FrequentAsked/FrequentAsked";
 
 const Home = () => {
   const allTouristSpots = useLoaderData();
@@ -19,8 +20,11 @@ const Home = () => {
       <Facilities />
       <Opportunity />
       <Achievements />
-      <Talking />
+      <div className="bg-green-100 rounded-xl">
+        <Talking />
+      </div>
       <Countries />
+      <FrequentAsked />
     </div>
   );
 };

@@ -11,7 +11,10 @@ const Achievements = () => {
     visible: { opacity: 1, x: 0, transition: { duration: 1.8 } },
   };
   return (
-    <div className="max-w-6xl mx-auto mt-9 font-montserrat px-2">
+    <div
+      className="max-w-6xl mx-auto mt-9 font-montserrat px-2"
+      style={{ willChange: "transform" }}
+    >
       <h1 className="font-lora text-4xl md:text-5xl font-semibold text-center">
         Our Achievements
       </h1>
