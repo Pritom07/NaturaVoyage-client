@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import Map from "../Map/Map";
+import { VscDebugBreakpointLog } from "react-icons/vsc";
 
 const SpotDetails = () => {
   const spot = useLoaderData();
@@ -16,7 +17,7 @@ const SpotDetails = () => {
     photoURL,
   } = spot;
   return (
-    <div className="max-w-6xl mx-auto font-montserrat px-1">
+    <div className="max-w-6xl mx-auto font-montserrat px-2">
       <section className="grid grid-cols-12 gap-5 mt-8">
         <div className="col-span-12 xl:col-span-8">
           <div className="card lg:card-side bg-base-100 shadow-sm border-2 border-green-500">
@@ -28,29 +29,28 @@ const SpotDetails = () => {
               <h1 className="text-xl font-semibold">
                 Country Name : {countryName}
               </h1>
-              <div className="flex justify-between items-center text-[16px] font-semibold">
-                <h1>
-                  Average Cost :{" "}
-                  <span className="text-slate-500">${averageCost}</span>
-                </h1>
-                <h1>
-                  Travel Time :{" "}
-                  <span className="text-slate-500">{travelTime}</span>
-                </h1>
-              </div>
               <h1 className="text-[16px] font-semibold">
-                Location : <span className="text-slate-500">{location}</span>
+                <VscDebugBreakpointLog className="inline" /> Average Cost :{" "}
+                <span className="text-slate-500">${averageCost}</span>
               </h1>
               <h1 className="text-[16px] font-semibold">
-                Total Visitors Per Year :{" "}
-                <span className="text-slate-500">{totalVisitors}</span>
+                <VscDebugBreakpointLog className="inline" /> Travel Time :{" "}
+                <span className="text-slate-500">{travelTime}</span>
               </h1>
               <h1 className="text-[16px] font-semibold">
-                Seasonality :{" "}
+                <VscDebugBreakpointLog className="inline" /> Location :{" "}
+                <span className="text-slate-500">{location}</span>
+              </h1>
+              <h1 className="text-[16px] font-semibold">
+                <VscDebugBreakpointLog className="inline" /> Total Visitors Per
+                Year : <span className="text-slate-500">{totalVisitors}</span>
+              </h1>
+              <h1 className="text-[16px] font-semibold">
+                <VscDebugBreakpointLog className="inline" /> Seasonality :{" "}
                 <span className="text-slate-500">{seasonality}</span>
               </h1>
               <h1 className="text-[16px] font-semibold">
-                Short Description :{" "}
+                <VscDebugBreakpointLog className="inline" /> Short Description :{" "}
                 <span className="text-slate-500">{shortDescription}</span>
               </h1>
             </div>

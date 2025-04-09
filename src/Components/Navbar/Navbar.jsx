@@ -31,13 +31,6 @@ const Navbar = () => {
           Add Tourist Spot
         </NavLink>
       </li>
-      {/* <li className="text-[18px] text-white font-semibold font-montserrat">
-        <NavLink to={`/mylist/${encodeURIComponent(User.displayName)}`}>
-          <FaListCheck />
-          My List
-        </NavLink>
-      </li> */}
-
       <li className="text-[18px] text-white font-semibold font-montserrat">
         <NavLink to={`/mylist/${encodeURIComponent(User?.email)}`}>
           <FaListCheck />

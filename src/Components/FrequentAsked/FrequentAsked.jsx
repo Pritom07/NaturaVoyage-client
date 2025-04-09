@@ -1,6 +1,6 @@
 const FrequentAsked = () => {
   return (
-    <div className="max-w-6xl mx-auto mt-8 font-montserrat">
+    <div className="max-w-6xl mx-auto mt-8 font-montserrat px-2">
       <h1 className="text-center text-5xl font-semibold font-lora">
         Some Frequently Asked Questions
       </h1>
