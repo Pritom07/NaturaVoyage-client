@@ -46,7 +46,7 @@ const UpdateSpot = () => {
       userEmail,
     };
 
-    fetch(`http://localhost:5000/spots/${_id}`, {
+    fetch(`https://natura-voyage-server.vercel.app/spots/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

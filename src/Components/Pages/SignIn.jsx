@@ -40,7 +40,7 @@ const SignIn = () => {
         const username = signInUser.displayName;
         const user = { email, lastSignIn };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://natura-voyage-server.vercel.app/users", {
           method: "PATCH",
           headers: {
             "content-type": "application/json",
@@ -73,7 +73,7 @@ const SignIn = () => {
         const lastSignIn = user.metadata.lastSignInTime;
         const userInfo = { name, email, lastSignIn };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://natura-voyage-server.vercel.app/users", {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -103,7 +103,7 @@ const SignIn = () => {
         const lastSignInTime = user.metadata.lastSignInTime;
         const User = { name, lastSignInTime };
 
-        fetch("http://localhost:5000/users/github", {
+        fetch("https://natura-voyage-server.vercel.app/users/github", {
           method: "PUT",
           headers: {
             "content-type": "application/json",

@@ -50,7 +50,7 @@ const SignUp = () => {
             toast.error(err.message);
           });
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://natura-voyage-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

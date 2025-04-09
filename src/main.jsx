@@ -29,12 +29,12 @@ const router = createBrowserRouter(
       <Route path="/" element={<Root />}>
         <Route
           index
-          loader={() => fetch("http://localhost:5000/spots")}
+          loader={() => fetch("https://natura-voyage-server.vercel.app/spots")}
           element={<Home />}
         ></Route>
         <Route
           path="/allspots"
-          loader={() => fetch("http://localhost:5000/spots")}
+          loader={() => fetch("https://natura-voyage-server.vercel.app/spots")}
           element={<AllSpots />}
         ></Route>
         <Route
@@ -48,7 +48,9 @@ const router = createBrowserRouter(
         <Route
           path="/mylist/:email"
           loader={({ params }) =>
-            fetch(`http://localhost:5000/spots/user/${params.email}`)
+            fetch(
+              `https://natura-voyage-server.vercel.app/spots/user/${params.email}`
+            )
           }
           element={
             <PrivateRoute>
@@ -59,14 +61,14 @@ const router = createBrowserRouter(
         <Route
           path="/update/:id"
           loader={({ params }) =>
-            fetch(`http://localhost:5000/spots/${params.id}`)
+            fetch(`https://natura-voyage-server.vercel.app/spots/${params.id}`)
           }
           element={<UpdateSpot />}
         ></Route>
         <Route
           path="/spot/:id"
           loader={({ params }) =>
-            fetch(`http://localhost:5000/spots/${params.id}`)
+            fetch(`https://natura-voyage-server.vercel.app/spots/${params.id}`)
           }
           element={
             <PrivateRoute>
@@ -77,7 +79,9 @@ const router = createBrowserRouter(
         <Route
           path="/country/:countryName"
           loader={({ params }) =>
-            fetch(`http://localhost:5000/spots/country/${params.countryName}`)
+            fetch(
+              `https://natura-voyage-server.vercel.app/spots/country/${params.countryName}`
+            )
           }
           element={<SpecificCountry />}
         ></Route>

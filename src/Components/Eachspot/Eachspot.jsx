@@ -25,7 +25,7 @@ const Eachspot = ({ spot, spots, setSpots }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/spots/${id}`, {
+        fetch(`https://natura-voyage-server.vercel.app/spots/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -4,7 +4,7 @@ import Countrycard from "../Countrycard/Countrycard";
 const Countries = () => {
   const [countries, setCountries] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/countries")
+    fetch("https://natura-voyage-server.vercel.app/countries")
       .then((res) => res.json())
       .then((data) => setCountries(data));
   }, []);

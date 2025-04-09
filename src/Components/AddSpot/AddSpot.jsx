@@ -42,7 +42,7 @@ const AddSpot = () => {
       userEmail,
     };
 
-    fetch("http://localhost:5000/spots", {
+    fetch("https://natura-voyage-server.vercel.app/spots", {
       method: "POST",
       headers: {
         "content-type": "application/json",
