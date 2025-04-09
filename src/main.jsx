@@ -21,6 +21,7 @@ import SpotDetails from "./Components/SpotDetails/SpotDetails";
 import UpdateSpot from "./Components/UpdateSpot/UpdateSpot";
 import Error from "./Components/Error";
 import SpecificCountry from "./Components/SpecificCountry/SpecificCountry";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,13 +37,24 @@ const router = createBrowserRouter(
           loader={() => fetch("http://localhost:5000/spots")}
           element={<AllSpots />}
         ></Route>
-        <Route path="/addspot" element={<AddSpot />}></Route>
+        <Route
+          path="/addspot"
+          element={
+            <PrivateRoute>
+              <AddSpot />
+            </PrivateRoute>
+          }
+        ></Route>
         <Route
           path="/mylist/:email"
           loader={({ params }) =>
             fetch(`http://localhost:5000/spots/user/${params.email}`)
           }
-          element={<Mylist />}
+          element={
+            <PrivateRoute>
+              <Mylist />
+            </PrivateRoute>
+          }
         ></Route>
         <Route
           path="/update/:id"
@@ -56,7 +68,11 @@ const router = createBrowserRouter(
           loader={({ params }) =>
             fetch(`http://localhost:5000/spots/${params.id}`)
           }
-          element={<SpotDetails />}
+          element={
+            <PrivateRoute>
+              <SpotDetails />
+            </PrivateRoute>
+          }
         ></Route>
         <Route
           path="/country/:countryName"

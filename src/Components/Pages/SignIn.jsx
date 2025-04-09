@@ -2,7 +2,7 @@ import { FaGoogle } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -13,6 +13,8 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 const SignIn = () => {
   const [pass, setPass] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
   const { signIn, googleLogin, githubLogin } = useContext(ThemeContext);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -50,7 +52,9 @@ const SignIn = () => {
             if (data.modifiedCount > 0) {
               toast.success(`Welcome ${username} , Have a Good Day.`);
             }
-            navigate("/");
+            {
+              location.state ? navigate(location.state) : navigate("/");
+            }
           });
       })
       .catch((err) => {
@@ -78,9 +82,12 @@ const SignIn = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.modifiedCount > 0 || data.upsertedCount > 0)
+            if (data.modifiedCount > 0 || data.upsertedCount > 0) {
               toast.success(`Welcome ${name} , Have a Good Day.`);
-            navigate("/");
+            }
+            {
+              location.state ? navigate(location.state) : navigate("/");
+            }
           });
       })
       .catch((err) => {
@@ -107,7 +114,9 @@ const SignIn = () => {
           .then((data) => {
             if (data.modifiedCount > 0 || data.upsertedCount > 0) {
               toast.success(`Welcome ${name} , Have a Good Day.`);
-              navigate("/");
+            }
+            {
+              location.state ? navigate(location.state) : navigate("/");
             }
           });
       })
